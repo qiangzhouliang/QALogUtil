@@ -54,62 +54,62 @@ object QALogUtil {
 
     @JvmStatic
     fun v(msg: String) {
-        if (mDebuggable.level >= 5) {
+        if (mDebuggable.level >= QALogLevel.LEVEL_VERBOSE.level) {
             Log.v(mTag, msg)
         }
     }
     @JvmStatic
     fun d(msg: String) {
-        if (mDebuggable.level >= 4) {
+        if (mDebuggable.level >= QALogLevel.LEVEL_DEBUG.level) {
             Log.d(mTag, msg)
         }
     }
     @JvmStatic
     fun i(msg: String) {
-        if (mDebuggable.level >= 3) {
+        if (mDebuggable.level >= QALogLevel.LEVEL_INFO.level) {
             Log.i(mTag, msg)
         }
     }
     @JvmStatic
     fun w(msg: String) {
-        if (mDebuggable.level >= 2) {
+        if (mDebuggable.level >= QALogLevel.LEVEL_WARN.level) {
             Log.w(mTag, msg)
         }
     }
     @JvmStatic
     fun w(tr: Throwable) {
-        if (mDebuggable.level >= 2) {
+        if (mDebuggable.level >= QALogLevel.LEVEL_WARN.level) {
             Log.w(mTag, "", tr)
         }
     }
     @JvmStatic
     fun w(msg: String, tr: Throwable?) {
-        if (mDebuggable.level >= 2) {
+        if (mDebuggable.level >= QALogLevel.LEVEL_WARN.level) {
             Log.w(mTag, msg, tr)
         }
     }
     @JvmStatic
     fun e(msg: String) {
-        if (mDebuggable.level >= 1) {
+        if (mDebuggable.level >= QALogLevel.LEVEL_ERROR.level) {
             Log.e(mTag, msg)
         }
     }
     @JvmStatic
     fun e(tr: Throwable?) {
-        if (mDebuggable.level >= 1) {
+        if (mDebuggable.level >= QALogLevel.LEVEL_ERROR.level) {
             Log.e(mTag, "", tr)
         }
     }
     @JvmStatic
     fun e(msg: String?, tr: Throwable?) {
-        if (mDebuggable.level >= 1 && msg != null) {
+        if (mDebuggable.level >= QALogLevel.LEVEL_ERROR.level && msg != null) {
             Log.e(mTag, msg, tr)
         }
     }
 
     @JvmStatic
     fun logErrAll(msg: String){
-        if (mDebuggable.level >= 1) {
+        if (mDebuggable.level >= QALogLevel.LEVEL_ERROR.level) {
             val segmentSize = 3 * 1024
             val length: Int = msg.length
             if (length <= segmentSize) { // 长度小于等于限制直接打印
