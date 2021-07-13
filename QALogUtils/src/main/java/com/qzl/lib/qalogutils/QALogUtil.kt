@@ -84,7 +84,7 @@ object QALogUtil {
     }
     @JvmStatic
     fun w(msg: String, tr: Throwable?) {
-        if (mDebuggable.level >= 2 && msg != null) {
+        if (mDebuggable.level >= 2) {
             Log.w(mTag, msg, tr)
         }
     }
@@ -115,7 +115,7 @@ object QALogUtil {
             if (length <= segmentSize) { // 长度小于等于限制直接打印
                 Log.e(mTag, msg)
             } else {
-                var tempMsg = msg;
+                var tempMsg = msg
                 while (tempMsg.length > segmentSize) { // 循环分段打印日志
                     val logContent = tempMsg.substring(0, segmentSize)
                     tempMsg = tempMsg.replace(logContent, "")
