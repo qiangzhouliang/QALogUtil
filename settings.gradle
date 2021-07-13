@@ -1,0 +1,3 @@
+rootProject.name = "QALogUtil"
+include ':app'
+include ':QALogUtils'
