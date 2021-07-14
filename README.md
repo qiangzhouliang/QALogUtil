@@ -12,9 +12,10 @@ allprojects {
 	}
 ```
 ## 1.2 添加依赖项
+lastestVersion = [![](https://jitpack.io/v/qiangzhouliang/QALogUtil.svg)](https://jitpack.io/#qiangzhouliang/QALogUtil)
 ```
 dependencies {
-	  implementation 'com.github.qiangzhouliang:QALogUtil:1.0.0'
+	  implementation 'com.github.qiangzhouliang:QALogUtil:$lastestVersion'
 }
 ```
 # 2 如何使用
