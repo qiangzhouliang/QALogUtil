@@ -15,6 +15,5 @@ class MainActivity : AppCompatActivity() {
         QALogUtil.w("我是 warring")
         QALogUtil.e("我是错误信息")
         QALogUtil.logErrAll("ninininininini")
-        Utils.e("jfisdjfisjfidfjisdjiji")
     }
 }
