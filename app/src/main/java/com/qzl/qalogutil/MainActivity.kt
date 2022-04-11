@@ -2,6 +2,7 @@ package com.qzl.qalogutil
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.qzl.lib.qalogutils.Utils
 import com.qzl.lib.qalogutils.QALogUtil
 
 class MainActivity : AppCompatActivity() {
@@ -14,5 +15,6 @@ class MainActivity : AppCompatActivity() {
         QALogUtil.w("我是 warring")
         QALogUtil.e("我是错误信息")
         QALogUtil.logErrAll("ninininininini")
+        Utils.e("jfisdjfisjfidfjisdjiji")
     }
 }

@@ -10,7 +10,6 @@ import android.util.Log
  */
 object QALogUtil {
 
-    private const val mTag = "QALogUtil"
     enum class QALogLevel(val level: Int) {
         /**
          * 不输出任何日志
@@ -55,55 +54,64 @@ object QALogUtil {
     @JvmStatic
     fun v(msg: String) {
         if (mDebuggable.level >= QALogLevel.LEVEL_VERBOSE.level) {
-            Log.v(mTag, msg)
+            val content = Utils.getMsgAndTagWithLineNumber(msg)
+            Log.v(content[0], content[1])
         }
     }
     @JvmStatic
     fun d(msg: String) {
         if (mDebuggable.level >= QALogLevel.LEVEL_DEBUG.level) {
-            Log.d(mTag, msg)
+            val content = Utils.getMsgAndTagWithLineNumber(msg)
+            Log.d(content[0], content[1])
         }
     }
     @JvmStatic
     fun i(msg: String) {
         if (mDebuggable.level >= QALogLevel.LEVEL_INFO.level) {
-            Log.i(mTag, msg)
+            val content = Utils.getMsgAndTagWithLineNumber(msg)
+            Log.i(content[0], content[1])
         }
     }
     @JvmStatic
     fun w(msg: String) {
         if (mDebuggable.level >= QALogLevel.LEVEL_WARN.level) {
-            Log.w(mTag, msg)
+            val content = Utils.getMsgAndTagWithLineNumber(msg)
+            Log.w(content[0], content[1])
         }
     }
     @JvmStatic
     fun w(tr: Throwable) {
         if (mDebuggable.level >= QALogLevel.LEVEL_WARN.level) {
-            Log.w(mTag, "", tr)
+            val content = Utils.getMsgAndTagWithLineNumber("")
+            Log.e(content[0], "",tr)
         }
     }
     @JvmStatic
     fun w(msg: String, tr: Throwable?) {
         if (mDebuggable.level >= QALogLevel.LEVEL_WARN.level) {
-            Log.w(mTag, msg, tr)
+            val content = Utils.getMsgAndTagWithLineNumber(msg)
+            Log.w(content[0], content[1],tr)
         }
     }
     @JvmStatic
     fun e(msg: String) {
         if (mDebuggable.level >= QALogLevel.LEVEL_ERROR.level) {
-            Log.e(mTag, msg)
+            val content = Utils.getMsgAndTagWithLineNumber(msg)
+            Log.e(content[0], content[1])
         }
     }
     @JvmStatic
     fun e(tr: Throwable?) {
         if (mDebuggable.level >= QALogLevel.LEVEL_ERROR.level) {
-            Log.e(mTag, "", tr)
+            val content = Utils.getMsgAndTagWithLineNumber("")
+            Log.e(content[0], "",tr)
         }
     }
     @JvmStatic
     fun e(msg: String?, tr: Throwable?) {
         if (mDebuggable.level >= QALogLevel.LEVEL_ERROR.level && msg != null) {
-            Log.e(mTag, msg, tr)
+            val content = Utils.getMsgAndTagWithLineNumber(msg)
+            Log.e(content[0], content[1],tr)
         }
     }
 
@@ -113,15 +121,18 @@ object QALogUtil {
             val segmentSize = 3 * 1024
             val length: Int = msg.length
             if (length <= segmentSize) { // 长度小于等于限制直接打印
-                Log.e(mTag, msg)
+                val content = Utils.getMsgAndTagWithLineNumber(msg)
+                Log.e(content[0], content[1])
             } else {
                 var tempMsg = msg
                 while (tempMsg.length > segmentSize) { // 循环分段打印日志
                     val logContent = tempMsg.substring(0, segmentSize)
                     tempMsg = tempMsg.replace(logContent, "")
-                    Log.e(mTag, logContent)
+                    val content = Utils.getMsgAndTagWithLineNumber(tempMsg)
+                    Log.e(content[0], content[1])
                 }
-                Log.e(mTag, tempMsg)
+                val content = Utils.getMsgAndTagWithLineNumber(tempMsg)
+                Log.e(content[0], content[1])
             }
         }
     }
