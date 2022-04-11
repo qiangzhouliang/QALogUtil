@@ -2,7 +2,6 @@ package com.qzl.qalogutil
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.qzl.lib.qalogutils.Utils
 import com.qzl.lib.qalogutils.QALogUtil
 
 class MainActivity : AppCompatActivity() {
